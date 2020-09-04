@@ -1,21 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectRestoMenu } from "../redux/restoSlice";
-import { addItem, removeItem, clearItems } from "../redux/cartSlice";
+import { addItem, removeItem } from "../redux/cartSlice";
 
 import styles from "./Menu.module.css";
 
 export function Menu() {
   const dispatch = useDispatch();
   const menu = useSelector(selectRestoMenu);
-
-  const handlePlus = (e) => {
-
-  };
-
-  const handleMinus = (e) => {
-
-  };
 
   return (
     <div>
@@ -27,11 +19,27 @@ export function Menu() {
               <div className={styles.menuItemName}>{x.name}</div>
             </div>
             <div className={styles.menuItem}>
-              <button className={styles.button}>-</button>
+              <button
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(removeItem(x.id));
+                }}
+              >
+                -
+              </button>
             </div>
             <div className={styles.menuItem}>{`$${x.price}`}</div>
             <div className={styles.menuItem}>
-              <button className={styles.button}>+</button>
+              <button
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(addItem(x.id));
+                }}
+              >
+                +
+              </button>
             </div>
           </div>
         );

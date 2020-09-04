@@ -10,10 +10,10 @@ function App() {
   dispatch(loadRestoAsync());
   return (
     <div className="App">
-      <div class="header">
+      <div className="header">
         <Titlebar />
       </div>
-      <div class="main">
+      <div className="main">
         <Menu />
       </div>
     </div>
