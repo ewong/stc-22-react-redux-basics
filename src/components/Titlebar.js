@@ -21,13 +21,15 @@ export function Titlebar() {
         onClick={(e) => {
           e.preventDefault();
           if (count === 0) return;
-          Object.values(items).forEach((item) => {
+          const total = Object.values(items).reduce((acc, item) => {
             const menuItem = menu[item.menuId];
-            if (menuItem === undefined) return;
+            if (menuItem === undefined) return acc;
             console.log(
               `Name: ${menuItem.name}, Price: ${menuItem.price}, Quantity: ${item.qty}`
             );
-          });
+            return acc + menuItem.price * item.qty;
+          }, 0);
+          console.log(`Total: $${total}`);
         }}
       >
         <FontAwesomeIcon icon={faShoppingBag} />
