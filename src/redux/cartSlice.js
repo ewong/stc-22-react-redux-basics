@@ -8,11 +8,11 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      const item = state.items[action.payload.productId];
+      const item = state.items[action.payload.menuId];
       if (item === undefined) {
-        state.items[action.payload.productId] = {
-          productId: action.payload.productId,
-          qty: 0,
+        state.items[action.payload.menuId] = {
+          menuId: action.payload.menuId,
+          qty: 1,
         };
       } else {
         item.qty++;
@@ -20,10 +20,10 @@ export const cartSlice = createSlice({
       state.itemCount++;
     },
     removeItem: (state, action) => {
-      const item = state.items[action.payload.productId];
+      const item = state.items[action.payload.menuId];
       if (item === undefined) return;
       item.qty === 1
-        ? delete state.items[action.payload.productId]
+        ? delete state.items[action.payload.menuId]
         : item.qty--;
       state.itemCount--;
     },
@@ -31,6 +31,6 @@ export const cartSlice = createSlice({
 });
 
 export const { addItem, removeItem } = cartSlice.actions;
-export const selectCartItems = (state) => state.cart.items;
-export const selectCartCount = (state) => state.cart.itemCount;
+export const selectCartItems = state => state.cart.items;
+export const selectCartCount = state => state.cart.itemCount;
 export default cartSlice.reducer;

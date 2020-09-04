@@ -23,7 +23,7 @@ export function Menu() {
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(removeItem(x.id));
+                  dispatch(removeItem({ menuId: x.id }));
                 }}
               >
                 -
@@ -35,7 +35,7 @@ export function Menu() {
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(addItem(x.id));
+                  dispatch(addItem({ menuId: x.id }));
                 }}
               >
                 +
