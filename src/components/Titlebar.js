@@ -29,7 +29,7 @@ export function Titlebar() {
             );
             return acc + menuItem.price * item.qty;
           }, 0);
-          console.log(`Total: $${total}`);
+          console.log(`Total: $${total.toFixed(2)}`);
         }}
       >
         <FontAwesomeIcon icon={faShoppingBag} />
