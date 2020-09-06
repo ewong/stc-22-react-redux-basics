@@ -10,7 +10,6 @@ export const restoSlice = createSlice({
     setResto: (state, action) => {
       state.name = action.payload.name;
       state.menu = action.payload.menu;
-      console.log(state);
     },
   },
 });
